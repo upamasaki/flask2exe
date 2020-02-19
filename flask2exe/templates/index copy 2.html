@@ -1,0 +1,282 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="content">
+  <script type="text/javascript" language="javascript">
+
+    var count = 0;
+    var fileList;
+    var file;
+    var fileCount;
+
+    function loadImg(fileList, count){
+      // ファイルの数を取得
+      fileCount = fileList.length;
+    
+      var loadCompleteCount = 0;
+      var imageList = "";
+    
+      // FileReaderを生成
+      var fileReader = new FileReader();
+
+      // ファイルを取得
+      file = fileList[ count ];
+      console.log("this")
+      console.log(this)
+      // 読み込み完了時の処理を追加
+      fileReader.onload = function() {
+        console.log("this.result")
+        console.log(this.result)
+        // <li>,<img>タグの生成
+        imageList += "<img src=\"" + this.result + "\" />\r\n";
+
+        document.getElementById( "imgName" ).innerHTML = fileList[count].name;
+
+        img_state = parseInt(count)+parseInt(1)
+        console.log(count+1 + "/" + fileCount);
+        document.getElementById( "imgState" ).innerHTML = '<i class="fa fa-refresh"></i> ' + img_state + " / " + fileCount;
+
+        // <ul>タグに<li>,<img>を流し込む
+        document.getElementById( "ID001" ).innerHTML = imageList;
+
+      };
+
+      // ファイルの読み込み(Data URI Schemeの取得)
+      fileReader.readAsDataURL( file );
+
+      return fileList[count].name;
+    }
+
+    function OnFileSelect( inputElement )
+    {
+      console.log("OnFileSelect!!!");
+      // ファイルリストを取得
+      fileList = inputElement.files;
+      console.log("fileList");
+      console.log(fileList);
+
+      console.log(fileList[0].name);
+      loadImg(fileList, count);
+    }
+
+    function imgNext(img_flag){
+      count++;
+      console.log("imgNext");
+      console.log(count+1 + "/" + fileCount);
+      if(count<fileCount){
+        img_name = loadImg(fileList, count);
+        post_func('http://localhost:5555/post', img_name, img_flag)
+        
+      }else{
+        demo.showNotification2('top','left', '最後の画像です');
+      }
+      
+
+    }
+
+    function imgBack(){
+      console.log("imgBack");
+      count--;
+      if(count>=0){
+        loadImg(fileList, count);
+      }else{
+        demo.showNotification2('top','left', '最初の画像です');
+      }
+      
+    }
+    
+
+    function countup(){
+      count =  count + 1;
+      document.getElementById("text").innerHTML = count;
+      console.log(count + "枚目")
+    }
+
+    function post_func(url, img_name, img_flag) {
+      // Postで送るパラメータを作成
+      let formData = new FormData();
+
+      post_value = [img_name, img_flag]
+      formData.append('param', post_value);
+      fetch(url, {
+        method: 'POST',  // methodを指定しないとGETになる
+        body: formData,  // Postで送るパラメータを指定
+      })
+      .then(function() {  // Postした後に結果をGetする（コールバックなのでPostが実行完了してから実行される）
+        
+      });
+      // ここにget_funcを書くとPostとGetがほぼ同時に行われてしまい、Post結果をGetできない
+      // get_func('APIのGet用URL');
+    }
+
+    document.addEventListener('keypress', (event) => {
+      var keyName = event.key;
+      console.log(`keypress:${keyName}`);
+
+      if(keyName=='f'){
+        console.log('press f');
+        imgNext(1)
+      }
+
+      if(keyName=='j'){
+        console.log('press f');
+        imgNext(2)
+      }
+
+      if(keyName=='k'){
+        console.log('press k');
+        imgNext(0)
+      }
+    });
+
+    //<button class="btn btn-primary btn-block" onclick="demo.showNotification('top','left')">Top Left</button>
+  </script>
+
+
+  <div class="row">
+    <div class="col-lg-2 col-md-6 col-sm-6" >
+      <div class="alert alert-success alert-dismissible fade show">
+        <label for="file_photo">
+          画像の選択
+          <input type="file" id="file_photo" style="display:none;" multiple="multiple" onchange="OnFileSelect( this )" name="hogehoge[]">
+        </label>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgNext(0) id=nextBtn>
+        <b>NEXT</b><br>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6" >
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgBack() id=backBtn>
+        <b>BACK</b><br>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgNext(1) id=nextBtn>
+        <b>隠れていない</b><br>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgNext(2) id=nextBtn>
+        <b>隠れている</b><br>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="col-lg-10 col-md-10 col-sm-10">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <ul id="imgName" >image name</ul>
+        <hr>
+        <ul id="ID001" >image none</ul>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <div id="imgState"><i class="fa fa-refresh"></i>Update Now</div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/next" method="POST">
+        <button class="alert alert-warning alert-dismissible fade show" type="submit">
+          <b>NEXT</b><br>
+        </button>
+      </form>  
+    </div>
+    
+
+    <div class="col-lg-2 col-md-6 col-sm-6" >
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgBack() id=backBtn>
+        <b>BACK</b><br>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgNext(1) id=nextBtn>
+        <b>隠れていない</b><br>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <div class="alert alert-warning alert-dismissible fade show" onclick= imgNext(2) id=nextBtn>
+        <b>隠れている</b><br>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="col-lg-10 col-md-10 col-sm-10">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <ul id="imgName" >image name</ul>
+        <hr>
+        <img src="data:image/png;base64,{{ img64['img_data'] }}" alt="img_data"  id="imgslot"/>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <div id="imgState"><i class="fa fa-refresh"></i>Update Now</div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <form action="/update_setting" method="POST">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+        <label>対象のフォルダ</label>
+        <input class="form-control" type="text" name="read_path" placeholder="read_path" value="X:\aisin_image\乗車前(谷)\18日納品\20191118_1\VideoData_CAM4_CAM5\正面図\第一必要ファイル">
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+        <label>移動先フォルダ名</label>
+        <input class="form-control" type="text" placeholder="type1" value="隠れていない" name="type1">
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+        <label>移動先フォルダ名</label>
+        <input class="form-control" type="text" placeholder="type2" value="隠れている" name="type2">
+      </div>
+    </div>
+
+
+    
+    <div class="row">
+      <div class="update ml-auto mr-auto">
+        <button class="btn btn-primary btn-round" type="submit">Update Setting</button>
+      </div>  
+    </div>
+  
+  </form>
+
+
+</div>
+
+
+      
+{% endblock %}
