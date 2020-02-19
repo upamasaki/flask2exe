@@ -34,12 +34,8 @@ def logInit():
     file_name = now.strftime("%Y%m%d_%H%M%S") + ".csv"
     return file_name
 
-def log_write(log_path, file_name, value, img_path):
-    
-    
+def log_write(log_path, file_name, value, img_path):   
     pprint.pprint(value)
-    
-
     img_name = img_path.split('\\')[-1]
 
     print("img_name")
@@ -81,18 +77,9 @@ def get_file_path():
 
 @app.route('/')
 def index():
+    print("read root index.html")
     message['page_title'] = 'Hidden-Annotation'
     return render_template('index.html', msg=message, img64=img64)
-
-
-@app.route('/home')
-def home():
-    """Renders the home page."""
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-    )
 
 @app.route('/Skeleton')
 def Skeleton():
