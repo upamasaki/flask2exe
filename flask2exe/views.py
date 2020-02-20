@@ -65,19 +65,14 @@ def log_write(log_path, file_name, value, img_path):
 
         shutil.copy(base_file_path, send_file_path)
 
-    
-
-log_file = logInit()
-
-
-def get_file_path():
-    file_paths = glob.glob("X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\*")
-    print(file_paths)
-
 
 @app.route('/')
 def index():
+    global message
+
     print("read root index.html")
+    message["log_file"] = logInit()
+    reload_setting()
     message['page_title'] = 'Hidden-Annotation'
     return render_template('index.html', msg=message, img64=img64)
 
@@ -124,17 +119,12 @@ def reload_setting():
     print(message)
     
 
-reload_setting()
-
-
-
-
 @app.route("/update_setting", methods=["POST"])  #追加
 def update_setting():
     global message
+
     print("run update_setting()")
     req = request.form
-    
     message.update(req)
     print(message)
     
@@ -146,7 +136,7 @@ def update_setting():
 
 
 @app.route("/next", methods=["POST"])  #追加
-def next():
+def next1():
     global count
 
     print("run next()")
@@ -187,6 +177,21 @@ def type2():
     log_write(log_path, log_file, 2, file_paths[count])
     
     count = count + 1
+    reload_progress()
+
+    return render_template('index.html', msg=message, img64=img64)
+
+@app.route("/next/<int:img_type>", methods=["POST"])  #追加
+def next(img_type):
+    global message
+
+    print("run next()")
+    b64 = base64.encodestring(open(file_paths[count], 'rb').read())
+    img64 = {'img_data': b64.decode('utf8')}
+    print("count:{}".format(count))
+    log_write(log_path, log_file, img_type, file_paths[message['count']])
+    
+    message['count'] = message['count'] + 1
     reload_progress()
 
     return render_template('index.html', msg=message, img64=img64)
