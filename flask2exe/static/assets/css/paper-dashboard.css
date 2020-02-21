@@ -379,7 +379,7 @@ Copyright (c) 2015 Daniel Eden
 .navbar .navbar-nav>a.btn {
   border-width: 2px;
   font-weight: 600;
-  font-size: 0.8571em;
+  font-size: 1.2em;
   line-height: 1.35em;
   text-transform: uppercase;
   border: none;
@@ -3729,6 +3729,12 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   line-height: 35px;
 }
 
+
+.alert2 {
+  width: 100%;
+  height: 100%;
+}
+
 .alert {
   border: 0;
   border-radius: 3px;
@@ -4606,7 +4612,7 @@ License - nucleoapp.com/license/
   top: 0;
   height: 100%;
   bottom: 0;
-  width: 260px;
+  width: 120px;
   left: 0;
   z-index: 1030;
   border-right: 1px solid #ddd;
@@ -4617,7 +4623,7 @@ License - nucleoapp.com/license/
   position: relative;
   height: calc(100vh - 75px);
   overflow: auto;
-  width: 260px;
+  width: 120px;
   z-index: 4;
   padding-bottom: 100px;
 }
@@ -5022,7 +5028,7 @@ License - nucleoapp.com/license/
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 260px);
+  width: calc(100% - 120px);
   background-color: #f4f3ef;
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
@@ -5034,7 +5040,7 @@ License - nucleoapp.com/license/
 .main-panel>.content {
   padding: 0 30px 30px;
   min-height: calc(100vh - 123px);
-  margin-top: 93px;
+  margin-top: 63px;
 }
 
 .main-panel>.navbar {
@@ -5052,7 +5058,7 @@ License - nucleoapp.com/license/
 }
 
 .panel-header {
-  height: 260px;
+  height: 120px;
   padding-top: 80px;
   padding-bottom: 45px;
   background: #141E30;
@@ -5573,9 +5579,9 @@ License - nucleoapp.com/license/
 }
 
 .card label {
-  font-size: 0.8571em;
-  margin-bottom: 5px;
-  color: #9A9A9A;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #252422;
 }
 
 .card .card-footer {
@@ -5865,11 +5871,11 @@ License - nucleoapp.com/license/
   }
   .nav-open .main-panel {
     right: 0;
-    -webkit-transform: translate3d(260px, 0, 0);
-    -moz-transform: translate3d(260px, 0, 0);
-    -o-transform: translate3d(260px, 0, 0);
-    -ms-transform: translate3d(260px, 0, 0);
-    transform: translate3d(260px, 0, 0);
+    -webkit-transform: translate3d(120px, 0, 0);
+    -moz-transform: translate3d(120px, 0, 0);
+    -o-transform: translate3d(120px, 0, 0);
+    -ms-transform: translate3d(120px, 0, 0);
+    transform: translate3d(120px, 0, 0);
   }
   .nav-open .sidebar {
     -webkit-transform: translate3d(0px, 0, 0);
@@ -5883,11 +5889,11 @@ License - nucleoapp.com/license/
     overflow-x: hidden;
   }
   .nav-open .menu-on-right .main-panel {
-    -webkit-transform: translate3d(-260px, 0, 0);
-    -moz-transform: translate3d(-260px, 0, 0);
-    -o-transform: translate3d(-260px, 0, 0);
-    -ms-transform: translate3d(-260px, 0, 0);
-    transform: translate3d(-260px, 0, 0);
+    -webkit-transform: translate3d(-120px, 0, 0);
+    -moz-transform: translate3d(-120px, 0, 0);
+    -o-transform: translate3d(-120px, 0, 0);
+    -ms-transform: translate3d(-120px, 0, 0);
+    transform: translate3d(-120px, 0, 0);
   }
   .nav-open .menu-on-right .navbar-collapse,
   .nav-open .menu-on-right .sidebar {
@@ -5905,17 +5911,17 @@ License - nucleoapp.com/license/
     transform: translate3d(-300px, 0, 0);
   }
   .nav-open .menu-on-right #bodyClick {
-    right: 260px;
+    right: 120px;
     left: auto;
   }
   .menu-on-right .sidebar {
     left: auto;
     right: 0;
-    -webkit-transform: translate3d(260px, 0, 0);
-    -moz-transform: translate3d(260px, 0, 0);
-    -o-transform: translate3d(260px, 0, 0);
-    -ms-transform: translate3d(260px, 0, 0);
-    transform: translate3d(260px, 0, 0);
+    -webkit-transform: translate3d(120px, 0, 0);
+    -moz-transform: translate3d(120px, 0, 0);
+    -o-transform: translate3d(120px, 0, 0);
+    -ms-transform: translate3d(120px, 0, 0);
+    transform: translate3d(120px, 0, 0);
   }
   .bar1,
   .bar2,
@@ -6187,7 +6193,7 @@ License - nucleoapp.com/license/
     opacity: 1;
     top: 0;
     right: 0;
-    left: 260px;
+    left: 120px;
     content: "";
     z-index: 9999;
     overflow-x: hidden;
@@ -6214,7 +6220,7 @@ License - nucleoapp.com/license/
     display: block;
     top: 0;
     height: 100%;
-    width: 260px;
+    width: 120px;
     right: auto;
     left: 0;
     z-index: 1032;
@@ -6226,11 +6232,11 @@ License - nucleoapp.com/license/
     -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
     -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
     transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-    -webkit-transform: translate3d(-260px, 0, 0);
-    -moz-transform: translate3d(-260px, 0, 0);
-    -o-transform: translate3d(-260px, 0, 0);
-    -ms-transform: translate3d(-260px, 0, 0);
-    transform: translate3d(-260px, 0, 0);
+    -webkit-transform: translate3d(-120px, 0, 0);
+    -moz-transform: translate3d(-120px, 0, 0);
+    -o-transform: translate3d(-120px, 0, 0);
+    -ms-transform: translate3d(-120px, 0, 0);
+    transform: translate3d(-120px, 0, 0);
   }
   .main-panel {
     width: 100%;
@@ -6429,5 +6435,113 @@ License - nucleoapp.com/license/
     padding: 15px;
   }
 }
+
+.side_text{
+  padding-left :0;
+}
+
+.check_box_anotate{
+  padding : 0px 0px 0px;
+  vertical-align: middle;        /* 中央寄せ */
+  margin-bottom:12px;
+}
+
+.skel_img{
+  width: 100%;
+
+}
+
+.skel_hr{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.skel_point { 
+  position:absolute;
+  left:-7px ; 
+  top:-7px ; 
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ef8157;/*背景色*/
+}
+
+.img_preview {
+  position: relative;
+}
+
+
+/* my checkbox */
+/* https://kodocode.net/design-css-checkbox/ */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.5em; height: 1.5em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713\0020';
+  position: absolute;
+  top: .15em; left: .22em;
+  font-size: 1.5em;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+  font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #4778d9!important;
+}
+
 
 /*# sourceMappingURL=dashboard-free.css.map */

@@ -140,7 +140,7 @@
   <div class="row">
     <div class="col-lg-2 col-md-6 col-sm-6">
       <form action="/next" method="POST">
-        <button class="alert alert-warning alert-dismissible fade show" type="submit">
+        <button class="btn btn-warning btn-block alert2 " type="submit">
           <b>NEXT</b><br>
         </button>
       </form>  
@@ -148,25 +148,33 @@
     
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/next" method="POST">
-        <button class="alert alert-warning alert-dismissible fade show" type="submit">
+      <form action="/back">
+        <button class="btn btn-warning btn-block alert2" type="submit">
           <b>BACK</b><br>
         </button>
       </form>  
     </div>
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/type1" method="POST">
-        <button class="alert alert-warning alert-dismissible fade show" type="submit">
+      <form action="/next1" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
           <b>隠れていない</b><br>
         </button>
       </form>  
     </div>
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/type2" method="POST">
-        <button class="alert alert-warning alert-dismissible fade show" type="submit">
+      <form action="/next2" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
           <b>隠れている</b><br>
+        </button>
+      </form>  
+    </div>
+
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/save_data">
+        <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
+          <b>データの保存</b><br>
         </button>
       </form>  
     </div>
@@ -176,14 +184,14 @@
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="card card-stats">
         <div class="card-body ">
-          <ul id="imgName" >image name</ul>
+          <ul id="imgName" >{{ msg['img_name'] }}</ul>
           <hr>
           <img src="data:image/png;base64,{{ img64['img_data'] }}" alt="img_data"  id="imgslot"/>
         </div>
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <div id="imgState"><i class="fa fa-refresh"></i>Update Now</div> 
+            <div id="imgState"><i class="fa fa-refresh"></i>{{ msg['img_path'] }}</div> 
           </div>
         </div>
       </div>
@@ -232,47 +240,6 @@
     </div>
   </div>
  
-
-
-
-  <form action="/update_setting" method="POST">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="form-group">
-        <label>対象のフォルダ</label>
-        <input class="form-control" type="text" name="read_path" placeholder="read_path" value="X:\aisin_image\乗車前(谷)\18日納品\20191118_1\VideoData_CAM4_CAM5\正面図\第一必要ファイル">
-      </div>
-    </div>
-
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="form-group">
-        <label>移動先フォルダ名</label>
-        <input class="form-control" type="text" placeholder="type1" value="隠れていない" name="type1">
-      </div>
-    </div>
-
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="form-group">
-        <label>移動先フォルダ名</label>
-        <input class="form-control" type="text" placeholder="type2" value="隠れている" name="type2">
-      </div>
-    </div>
-
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="form-group">
-        <label>開始カウント</label>
-        <input class="form-control" type="number" placeholder="type2" value="0" name="save_count">
-      </div>
-    </div>
-
-
-    
-    <div class="row">
-      <div class="update ml-auto mr-auto">
-        <button class="btn btn-primary btn-round" type="submit">Update Setting</button>
-      </div>  
-    </div>
-  
-  </form>
 
 
 </div>

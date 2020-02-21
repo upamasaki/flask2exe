@@ -1,12 +1,30 @@
 {
     "test": "test",
+    "page_title": "Config",
+    "config_dir": "./config/",
+    "config_file": "config.json",
+    "config_path": "./config/config.json",
+    "output_file": "output.json",
+    "output_dir": "./log/",
+    "output_path": "./log/output.json",
+    "log_file": "20200220_224852.csv",
     "read_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル",
     "type1": "隠れていない",
     "type2": "隠れている",
-    "save_count": "3106",
+    "save_count": "0",
     "path_len": 11030,
-    "path1_len": 106,
-    "path2_len": 34,
-    "count": 2996,
-    "pvalue": 27
+    "path1_len": 23,
+    "path2_len": 11,
+    "count": 3012,
+    "pvalue": 27,
+    "img_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190825085114CAM5_476.png",
+    "data": {
+        "img_name": "20190825085114CAM5_477.png",
+        "img_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190825085114CAM5_477.png",
+        "count": 3013,
+        "img_type": 1
+    },
+    "output": "output.json",
+    "img_name": "20190825085114CAM5_476.png",
+    "img_type": -1
 }
