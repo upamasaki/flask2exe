@@ -37,7 +37,8 @@ count = 0
 
 total_data = []
 
-img_file = "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190820111100CAM5_094.png"
+#img_file = "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190820111100CAM5_094.png"
+img_file = "./flask2exe/static/assets/img/not_Image.png"
 b64 = base64.encodestring(open(img_file, 'rb').read())
 message = {'test': 'test'}
 img64 = {'img_data': b64.decode('utf8')}
@@ -71,18 +72,15 @@ def logInit():
     print(skel_df)
     
     message['skel_name_key'] = [(s1, s2) for s1, s2 in zip(skel_df['posname'], skel_df['keyname'])]
+    message['skel_key'] = [i for i in skel_df['keyname']]
+    message['skel_key_dump'] = json.dumps(message['skel_key'])
 
     return file_name
 
 def log_write(log_path, file_name, value, img_path):   
     img_name = img_path.split('\\')[-1]
 
-    print(">img_name:{}  type:{}".format(img_name, value))
-    # パラメータをローカルのファイルに書き込むだけ
-    with open(log_path + file_name, mode='a') as f:
-        f.write("{}, {}\n".format(img_name, value))
-        print(">csv write:{}  ".format(log_path))
-    
+    print(">img_name:{}  type:{}".format(img_name, value))    
     base_file_path = message['read_path'] + "\\" + img_name
     
     
@@ -117,7 +115,7 @@ def reload_progress():
 
     file_paths1 = glob.glob("./log/{}/*".format(message['type1']))
     file_paths2 = glob.glob("./log/{}/*".format(message['type2']))
-    message['path_len'] = 11030#len(file_paths)
+    message['path_len'] = len(file_paths)
     message['path1_len'] = len(file_paths1)
     message['path2_len'] = len(file_paths2)
     message['pvalue'] = int(message['count']/message['path_len']*100)
@@ -164,6 +162,9 @@ def next(img_type):
     ## next data info 
     message['count'] = message['count'] + 1
     data = utils.get_img_info(file_paths, message)
+
+    print("Date dict")
+    pprint.pprint(data)
     message.update(data)
 
     reload_progress()
@@ -175,7 +176,6 @@ def next(img_type):
     pprint.pprint(total_data)
 
     return render_template('index.html', msg=message, img64=img64)
-
 
 @app.route("/back")  #追加
 def back():
@@ -215,7 +215,9 @@ def Config():
     
     reload_setting()
 
-    print(">Config page -- msg:{}".format(message))
+    print(">Config page -- msg:")
+    pprint.pprint(message)
+    
     return render_template('config.html', msg=message)
 
 @app.route("/update_setting", methods=["POST"])  #追加
@@ -225,6 +227,7 @@ def update_setting():
     print("run update_setting()")
     req = request.form
     message.update(req)
+    message['count'] = int(message['save_count'])
     print(message)
     
     with open(message['config_dir']+'config.json', 'w') as f:
@@ -255,30 +258,34 @@ def save_data():
 
     return render_template('index.html', msg=message, img64=img64)
 
+
 #####################################
 ## skeleton page
+#####################################
 
 @app.route('/Skeleton')
 def Skeleton():
     message['page_title'] = 'Skeleton-Annotation'
     return render_template('Skeleton.html', msg=message, img64=img64)
 
-@app.route("/skeleton_next<int:img_type>", methods=["POST"])  #追加
-def skeleton_next(img_type):
+@app.route("/skeleton_next<string:phase_type>-<string:img_type>", methods=["POST"])  #追加
+def skeleton_next(img_type, phase_type):
     global message
     global total_data
-
+    global file_paths
     
-    print(">next type:{}".format(img_type))
-    b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())
-    img64 = {'img_data': b64.decode('utf8')}
-    print(">message['count']:{}".format(message['count']))
-    log_write(log_path, log_file, img_type, file_paths[message['count']])
+    ## =======================================
+    ## now data save section
+    print(">img_type:{}, phase_type:{}".format(img_type, phase_type))
+    utils.move_skel_file(img_type, phase_type, message, file_paths[message['count']])
     
     data = utils.get_img_info(file_paths, message)
     data['img_type'] = img_type
+    data['img_flag'] = message[img_type]
+    data['phase_type'] = phase_type
+    data['phase_flag'] = message[phase_type]
+
     message['data'] = data
-    
     total_data.append(message['data'])
 
     ## =======================================
@@ -287,6 +294,8 @@ def skeleton_next(img_type):
     data = utils.get_img_info(file_paths, message)
     message.update(data)
 
+    b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())
+    img64 = {'img_data': b64.decode('utf8')}
     
     reload_progress()
 

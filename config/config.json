@@ -3,28 +3,114 @@
     "page_title": "Config",
     "config_dir": "./config/",
     "config_file": "config.json",
+    "skel_file": "skeleton_pos.csv",
     "config_path": "./config/config.json",
+    "skel_path": "./config/skeleton_pos.csv",
     "output_file": "output.json",
     "output_dir": "./log/",
     "output_path": "./log/output.json",
+    "skel_name_key": [
+        [
+            "左肩峰",
+            "skel1"
+        ],
+        [
+            "右肩峰",
+            "skel2"
+        ],
+        [
+            "左肘",
+            "skel3"
+        ],
+        [
+            "右肘",
+            "skel4"
+        ],
+        [
+            "左腸骨",
+            "skel5"
+        ],
+        [
+            "右腸骨",
+            "skel6"
+        ],
+        [
+            "左手首",
+            "skel7"
+        ],
+        [
+            "右手首",
+            "skel8"
+        ],
+        [
+            "左膝関節点",
+            "skel9"
+        ],
+        [
+            "右膝関節点",
+            "skel10"
+        ],
+        [
+            "左足関節点",
+            "skel11"
+        ],
+        [
+            "右足関節点",
+            "skel12"
+        ],
+        [
+            "左足尖",
+            "skel13"
+        ],
+        [
+            "右足尖",
+            "skel14"
+        ],
+        [
+            "前額部",
+            "skel15"
+        ],
+        [
+            "顎",
+            "skel16"
+        ],
+        [
+            "胸骨",
+            "skel17"
+        ]
+    ],
     "log_file": "20200220_224852.csv",
-    "read_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル",
-    "type1": "隠れていない",
-    "type2": "隠れている",
+    "read_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample",
+    "type1": "not_hiding",
+    "type2": "hiding",
     "save_count": "0",
-    "path_len": 11030,
-    "path1_len": 23,
-    "path2_len": 11,
-    "count": 3012,
-    "pvalue": 27,
-    "img_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190825085114CAM5_476.png",
+    "path_len": 9,
+    "path1_len": 0,
+    "path2_len": 0,
+    "count": 4,
+    "pvalue": 44,
+    "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_098.png",
     "data": {
-        "img_name": "20190825085114CAM5_477.png",
-        "img_path": "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190825085114CAM5_477.png",
-        "count": 3013,
-        "img_type": 1
+        "img_name": "20190820111100CAM5_097.png",
+        "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_097.png",
+        "count": 3,
+        "img_type": "not_hiding",
+        "img_flag": "1",
+        "phase_type": "HC",
+        "phase_flag": "1"
     },
     "output": "output.json",
-    "img_name": "20190825085114CAM5_476.png",
-    "img_type": -1
+    "img_name": "20190820111100CAM5_098.png",
+    "img_type": -1,
+    "output_hc": "HC",
+    "flag_hc": "1",
+    "output_to": "TO",
+    "flag_to": "2",
+    "output_ms": "MS",
+    "flag_ms": "2",
+    "HC": "1",
+    "TO": "2",
+    "MS": "3",
+    "not_hiding": "1",
+    "hiding": "2"
 }

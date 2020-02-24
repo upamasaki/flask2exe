@@ -47,17 +47,9 @@
     </div>
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/skeleton_next1" method="POST">
-        <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>隠れていない</b><br>
-        </button>
-      </form>  
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/skeleton_next2" method="POST">
-        <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>隠れている</b><br>
+      <form action="/save_data">
+        <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
+          <b>データの読み込み</b><br>
         </button>
       </form>  
     </div>
@@ -72,13 +64,62 @@
 
   </div>
 
+  <div class="row">
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_hc'] }}-{{ msg['type1'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>HC 隠れていない</b><br>
+        </button>
+      </form>  
+    </div>
+  
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_hc'] }}-{{ msg['type2'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>HC 隠れている</b><br>
+        </button>
+      </form>  
+    </div>
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_to'] }}-{{ msg['type2'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>TO 隠れていない</b><br>
+        </button>
+      </form>  
+    </div>
+  
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_to'] }}-{{ msg['type1'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>TO 隠れている</b><br>
+        </button>
+      </form>  
+    </div>
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_ms'] }}-{{ msg['type1'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>MS 隠れていない</b><br>
+        </button>
+      </form>  
+    </div>
+  
+    <div class="col-lg-2 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_ms'] }}-{{ msg['type2'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>MS 隠れている</b><br>
+        </button>
+      </form>  
+    </div>
+  </div>
+
+
   
 
   <div class="row">
     <div class="col-lg-7 col-md-7 col-sm-7">
       <div class="card card-stats">
         <div class="card-body" id='js-target'>
-          <ul id="imgName" >image name</ul>
+          <ul id="imgName" >{{ msg['img_name'] }}</ul>
           <hr>
           <div class="img_preview">
             <img src="data:image/png;base64,{{ img64['img_data'] }}" alt="img_data"  id="imgslot" class="skel_img"/>
@@ -90,7 +131,7 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <div id="imgState"><i class="fa fa-refresh"></i>Update Now</div> 
+            <div id="imgState"><i class="fa fa-refresh"></i>{{ msg['img_path'] }}</div> 
           </div>
         </div>
       </div>
@@ -101,13 +142,17 @@
         <div class="card-body check_box_anotate ">
           {% for skel_name, skel_key in msg['skel_name_key'] %}
             <input type="checkbox" id="{{ skel_key }}" value="{{ skel_key }}" onchange="myfunc(this.value, this.checked)"/>
-            <label for="{{ skel_key }}" class="check_box_anotate">{{ skel_name }}</label>......<span id="{{ skel_key }}xy">(0,0)</span><hr class="skel_hr">
+            <label for="{{ skel_key }}" class="check_box_anotate">{{ skel_name }}</label>......<span class="skel_pos" id="{{ skel_key }}xy">(0,0)</span><hr class="skel_hr">
           {% endfor %}
           x:<span id="pos_x">0</span>  y:<span id="pos_y">0</span>
+          <hr class="skel_hr">
+          <input class="form-control" type="number" placeholder="count" value="0" name="save_count">
+          <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
+            <b>確定</b><br>
+          </button>
         </div>
       </div>
 
-     
     </div>
 
     <div class="col-lg-2 col-md-2 col-sm-2">
@@ -145,6 +190,7 @@
           <hr>
           <center>
             <h3>{{ msg['path2_len'] }}枚</h3>
+            {{ msg['skel_key_dump'] }}
           </center>
           <hr>
         </div>
@@ -220,6 +266,21 @@
       console.log("target_skel_key:" + target_skel_key);
     }
   }
+
+
+  console.log("querySelectorAll");
+  var b=document.querySelectorAll(".skel_pos");
+  console.log(b);
+  console.log(b[0]);
+  console.log(b[0].id);
+  var x = b[0].innerHTML.split(',')[0].split('(')[1];
+  var y = b[0].innerHTML.split(',')[1].split(')')[0];
+  console.log(x);
+  console.log(y);
+  for(var i=0;i<b.length;i++){
+    console.log(b[i].innerHTML);
+  }
+
 
 </script>
       
