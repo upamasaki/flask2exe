@@ -60,14 +60,29 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
-          <label>移動先フォルダ名(HC)</label>
-          <input class="form-control" type="text" placeholder="output" value="HC" name="output_hc">
+          <label>移動先フォルダ名(Ready)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg['output_ready']}}" name="output_ready">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
-          <label>フラグ(HC)</label>
-          <input class="form-control" type="text" placeholder="output" value="1" name="HC">
+          <label>フラグ(Ready)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg[msg['output_ready']]}}" name="{{msg['output_ready']}}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <label>移動先フォルダ名(HC1)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg['output_hc']}}" name="output_hc">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <label>フラグ(HC1)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg[msg['output_hc']]}}" name="{{msg['output_hc']}}">
         </div>
       </div>
     </div>
@@ -76,13 +91,13 @@
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
           <label>移動先フォルダ名(TO)</label>
-          <input class="form-control" type="text" placeholder="output" value="TO" name="output_to">
+          <input class="form-control" type="text" placeholder="output" value="{{msg['output_to']}}" name="output_to">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
           <label>フラグ(TO)</label>
-          <input class="form-control" type="text" placeholder="output" value="2" name="TO">
+          <input class="form-control" type="text" placeholder="output" value="{{msg[msg['output_to']]}}" name="{{msg['output_to']}}">
         </div>
       </div>
     </div>
@@ -90,16 +105,32 @@
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
           <label>移動先フォルダ名(MS)</label>
-          <input class="form-control" type="text" placeholder="output" value="MS" name="output_ms">
+          <input class="form-control" type="text" placeholder="output" value="{{msg['output_ms']}}" name="output_ms">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
           <label>フラグ(MS)</label>
-          <input class="form-control" type="text" placeholder="output" value="3" name="MS">
+          <input class="form-control" type="text" placeholder="output" value="{{msg[msg['output_ms']]}}" name="{{msg['output_ms']}}">
         </div>
       </div>
-    </div>    
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <label>移動先フォルダ名(HC2)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg['output_hc2']}}" name="output_hc2">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <label>フラグ(HC2)</label>
+          <input class="form-control" type="text" placeholder="output" value="{{msg[msg['output_hc2']]}}" name="{{msg['output_hc2']}}">
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="update ml-auto mr-auto">
         <button class="btn btn-primary btn-round" type="submit">Update Setting</button>

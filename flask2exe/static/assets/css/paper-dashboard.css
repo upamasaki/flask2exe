@@ -2373,6 +2373,13 @@ h6,
   text-transform: uppercase;
 }
 
+h7,
+.h7 {
+  font-size: 0.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 p.description {
   font-size: 1.14em;
 }

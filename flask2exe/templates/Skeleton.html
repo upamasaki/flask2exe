@@ -30,16 +30,15 @@
 
   <div class="row">
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/skeleton_next0" method="POST">
+      <form action="/skeleton_nextskip-0" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
           <b>NEXT</b><br>
         </button>
       </form>  
     </div>
     
-
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/skeleton_back" method="POST">
+      <form action="/skeleton_nextback-9" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
           <b>BACK</b><br>
         </button>
@@ -65,51 +64,84 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_ready'] }}-{{ msg['type1'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>Ready</b><br><span style="font-size : 9pt">　</span>
+        </button>
+      </form>  
+    </div>
+  
+    <div class="col-lg-1 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_ready'] }}-{{ msg['type2'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          Ready<br>
+          <span style="font-size : 9pt">(Hiding)</span>
+        </button>
+      </form>  
+    </div>
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_hc'] }}-{{ msg['type1'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>HC 隠れていない</b><br>
+          <b>HC1</b><br><span style="font-size : 9pt">　</span>
         </button>
       </form>  
     </div>
   
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_hc'] }}-{{ msg['type2'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>HC 隠れている</b><br>
+          <b>HC1</b><br><span style="font-size : 9pt">(Hiding)</span>
         </button>
       </form>  
     </div>
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_to'] }}-{{ msg['type2'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>TO 隠れていない</b><br>
+          <b>TO</b><br><span style="font-size : 9pt">　</span>
         </button>
       </form>  
     </div>
   
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_to'] }}-{{ msg['type1'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>TO 隠れている</b><br>
+          <b>TO</b><br><span style="font-size : 9pt">(Hiding)</span>
         </button>
       </form>  
     </div>
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_ms'] }}-{{ msg['type1'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>MS 隠れていない</b><br>
+          <b>MS</b><br><span style="font-size : 9pt">　</span>
         </button>
       </form>  
     </div>
   
-    <div class="col-lg-2 col-md-6 col-sm-6">
+    <div class="col-lg-1 col-md-6 col-sm-6">
       <form action="/skeleton_next{{ msg['output_ms'] }}-{{ msg['type2'] }}" method="POST">
         <button class="btn btn-warning btn-block alert2" type="submit">
-          <b>MS 隠れている</b><br>
+          <b>MS</b><br><span style="font-size : 9pt">(Hiding)</span>
         </button>
       </form>  
     </div>
+    <div class="col-lg-1 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_hc2'] }}-{{ msg['type1'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>HC2</b><br><span style="font-size : 9pt">　</span>
+        </button>
+      </form>  
+    </div>
+  
+    <div class="col-lg-1 col-md-6 col-sm-6">
+      <form action="/skeleton_next{{ msg['output_hc2'] }}-{{ msg['type2'] }}" method="POST">
+        <button class="btn btn-warning btn-block alert2" type="submit">
+          <b>HC2</b><br><span style="font-size : 9pt">(Hiding)</span>
+        </button>
+      </form>  
+    </div>
+
+
   </div>
 
 
@@ -147,7 +179,7 @@
           x:<span id="pos_x">0</span>  y:<span id="pos_y">0</span>
           <hr class="skel_hr">
           <input class="form-control" type="number" placeholder="count" value="0" name="save_count">
-          <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
+          <button class="btn btn-primary btn-block alert2" type="submit" onclick="skel_Confirm()">
             <b>確定</b><br>
           </button>
         </div>
@@ -267,19 +299,57 @@
     }
   }
 
-
-  console.log("querySelectorAll");
-  var b=document.querySelectorAll(".skel_pos");
-  console.log(b);
-  console.log(b[0]);
-  console.log(b[0].id);
-  var x = b[0].innerHTML.split(',')[0].split('(')[1];
-  var y = b[0].innerHTML.split(',')[1].split(')')[0];
-  console.log(x);
-  console.log(y);
-  for(var i=0;i<b.length;i++){
-    console.log(b[i].innerHTML);
+  function post_func(url, data) {
+    // Postで送るパラメータを作成
+    let formData = new FormData();
+    console.log(">run post func");
+    console.log(data);
+    formData.append('param', data);
+    fetch(url, {
+      method: 'POST',  // methodを指定しないとGETになる
+      body: formData,  // Postで送るパラメータを指定
+    })
+    .then(function() {  // Postした後に結果をGetする（コールバックなのでPostが実行完了してから実行される）
+      
+    });
+    // ここにget_funcを書くとPostとGetがほぼ同時に行われてしまい、Post結果をGetできない
+    // get_func('APIのGet用URL');
   }
+
+  function skel_Confirm(){
+    demo.showNotification2('top','left', 'skel data Confirm......')
+    console.log("on click skel_Confirm");
+    var skel_pos=document.querySelectorAll(".skel_pos");
+    var skel_pos_box = [];
+
+    for(var i=0;i<skel_pos.length;i++){
+      skel_dict = {};
+      skel_dict['skel_id'] = skel_pos[i].id;
+      skel_dict['skel_key'] = skel_pos[i].id.split('xy')[0];
+
+      var x = skel_pos[i].innerHTML.split(',')[0].split('(')[1];
+      var y = skel_pos[i].innerHTML.split(',')[1].split(')')[0];
+
+      skel_dict['x'] = x;
+      skel_dict['y'] = y;
+      console.log(skel_dict );
+      skel_pos_box.push(skel_dict);
+
+
+    }
+    console.log(skel_pos_box);
+
+    dump_data = {};
+    dump_data['img_name'] = "{{msg['img_name']}}";
+    dump_data['key_data'] = skel_pos_box;
+
+    dump_data_json =  JSON.stringify(dump_data);
+    console.log(dump_data_json);
+    
+    post_func('http://localhost:5050/skel_dump', dump_data_json)
+
+  }
+
 
 
 </script>

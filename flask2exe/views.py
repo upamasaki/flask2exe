@@ -42,6 +42,8 @@ img_file = "./flask2exe/static/assets/img/not_Image.png"
 b64 = base64.encodestring(open(img_file, 'rb').read())
 message = {'test': 'test'}
 img64 = {'img_data': b64.decode('utf8')}
+skel_data = {}
+
 message['page_title'] = 'Hidden-Annotation'
 message['config_dir'] = './config/'
 message['config_file'] = 'config.json'
@@ -258,6 +260,24 @@ def save_data():
 
     return render_template('index.html', msg=message, img64=img64)
 
+@app.route("/save_data")  #追加
+def save_data_skel():
+    global message
+    global total_data
+
+    with open(message['config_path'], 'w') as f:
+        json.dump(message, f, indent=4, ensure_ascii=False)
+    
+    with open(message['output_path'], 'w') as f:
+        json.dump(total_data, f, indent=4, ensure_ascii=False)
+
+    print(">save_data -- ")
+    pprint.pprint(message)
+
+    print(">total_data")
+    pprint.pprint(total_data)
+
+    return render_template('Skeleton.html', msg=message, img64=img64)
 
 #####################################
 ## skeleton page
@@ -273,20 +293,26 @@ def skeleton_next(img_type, phase_type):
     global message
     global total_data
     global file_paths
-    
+    global skel_data
+
     ## =======================================
     ## now data save section
     print(">img_type:{}, phase_type:{}".format(img_type, phase_type))
-    utils.move_skel_file(img_type, phase_type, message, file_paths[message['count']])
-    
-    data = utils.get_img_info(file_paths, message)
-    data['img_type'] = img_type
-    data['img_flag'] = message[img_type]
-    data['phase_type'] = phase_type
-    data['phase_flag'] = message[phase_type]
 
-    message['data'] = data
-    total_data.append(message['data'])
+    if(phase_type=='skip'):
+        print("!!!!SKIP!!!!")
+    elif(phase_type=='back'):
+        print("!!!!BACK!!!!")
+    else:
+        utils.move_skel_file(img_type, phase_type, message, file_paths[message['count']])
+        data = utils.get_img_info(file_paths, message)
+        data['img_type'] = img_type
+        data['img_flag'] = message[img_type]
+        data['phase_type'] = phase_type
+        data['phase_flag'] = message[phase_type]
+        data.update(skel_data)
+        message['data'] = data
+        total_data.append(message['data'])
 
     ## =======================================
     ## next data info 
@@ -304,7 +330,7 @@ def skeleton_next(img_type, phase_type):
 
     print(">total data:")
     pprint.pprint(total_data)
-
+    skel_data = {}
     return render_template('Skeleton.html', msg=message, img64=img64)
 
 
@@ -331,4 +357,16 @@ def skeleton_back():
     print("> back message")
     pprint.pprint(message)
     print(">run back fin.... count:{}".format(message['count']))
+    return render_template('Skeleton.html', msg=message, img64=img64)
+
+@app.route("/skel_dump", methods=["POST"])  #追加
+def skel_dump():
+    global message
+    global skel_data
+    print("run skel_dump()")
+    req = request.form
+
+    json.loads(req['param'])
+    skel_data = json.loads(req['param'])
+    pprint.pprint(skel_data)
     return render_template('Skeleton.html', msg=message, img64=img64)

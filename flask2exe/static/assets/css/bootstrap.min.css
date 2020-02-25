@@ -359,6 +359,10 @@ template {
   font-size: 1rem
 }
 
+.h7, h7 {
+  font-size: 0.5rem
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300

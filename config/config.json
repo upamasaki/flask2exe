@@ -79,6 +79,26 @@
             "skel17"
         ]
     ],
+    "skel_key": [
+        "skel1",
+        "skel2",
+        "skel3",
+        "skel4",
+        "skel5",
+        "skel6",
+        "skel7",
+        "skel8",
+        "skel9",
+        "skel10",
+        "skel11",
+        "skel12",
+        "skel13",
+        "skel14",
+        "skel15",
+        "skel16",
+        "skel17"
+    ],
+    "skel_key_dump": "[\"skel1\", \"skel2\", \"skel3\", \"skel4\", \"skel5\", \"skel6\", \"skel7\", \"skel8\", \"skel9\", \"skel10\", \"skel11\", \"skel12\", \"skel13\", \"skel14\", \"skel15\", \"skel16\", \"skel17\"]",
     "log_file": "20200220_224852.csv",
     "read_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample",
     "type1": "not_hiding",
@@ -87,22 +107,126 @@
     "path_len": 9,
     "path1_len": 0,
     "path2_len": 0,
-    "count": 4,
-    "pvalue": 44,
-    "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_098.png",
+    "count": 3,
+    "pvalue": 33,
+    "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_097.png",
     "data": {
-        "img_name": "20190820111100CAM5_097.png",
-        "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_097.png",
-        "count": 3,
+        "img_name": "20190820111100CAM5_095.png",
+        "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_095.png",
+        "count": 1,
         "img_type": "not_hiding",
         "img_flag": "1",
-        "phase_type": "HC",
-        "phase_flag": "1"
+        "phase_type": "ready",
+        "phase_flag": "0",
+        "key_data": [
+            {
+                "skel_id": "skel1xy",
+                "skel_key": "skel1",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel2xy",
+                "skel_key": "skel2",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel3xy",
+                "skel_key": "skel3",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel4xy",
+                "skel_key": "skel4",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel5xy",
+                "skel_key": "skel5",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel6xy",
+                "skel_key": "skel6",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel7xy",
+                "skel_key": "skel7",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel8xy",
+                "skel_key": "skel8",
+                "x": " 360 ",
+                "y": " 309 "
+            },
+            {
+                "skel_id": "skel9xy",
+                "skel_key": "skel9",
+                "x": " 519 ",
+                "y": " 138 "
+            },
+            {
+                "skel_id": "skel10xy",
+                "skel_key": "skel10",
+                "x": " 593 ",
+                "y": " 213 "
+            },
+            {
+                "skel_id": "skel11xy",
+                "skel_key": "skel11",
+                "x": " 367 ",
+                "y": " 288 "
+            },
+            {
+                "skel_id": "skel12xy",
+                "skel_key": "skel12",
+                "x": " 344 ",
+                "y": " 286 "
+            },
+            {
+                "skel_id": "skel13xy",
+                "skel_key": "skel13",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel14xy",
+                "skel_key": "skel14",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel15xy",
+                "skel_key": "skel15",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel16xy",
+                "skel_key": "skel16",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "skel_id": "skel17xy",
+                "skel_key": "skel17",
+                "x": "0",
+                "y": "0"
+            }
+        ]
     },
     "output": "output.json",
-    "img_name": "20190820111100CAM5_098.png",
+    "img_name": "20190820111100CAM5_097.png",
     "img_type": -1,
-    "output_hc": "HC",
+    "output_hc": "HC1",
     "flag_hc": "1",
     "output_to": "TO",
     "flag_to": "2",
@@ -112,5 +236,11 @@
     "TO": "2",
     "MS": "3",
     "not_hiding": "1",
-    "hiding": "2"
+    "hiding": "2",
+    "HC1": "1",
+    "output_hc2": "HC2",
+    "HC2": "4",
+    "output_ready": "ready",
+    "Ready": "0",
+    "ready": "0"
 }
