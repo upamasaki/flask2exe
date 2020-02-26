@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # flask2exe
 
 ## pyinstallerでexeファイルを作成する
@@ -73,3 +74,8 @@ exeファイルの作成
 <br>
 https://max999blog.com/python-flask-pyinstaller-make-exe-file/
 
+=======
+flask2exe
+
+aaaa
+>>>>>>> master
