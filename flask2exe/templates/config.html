@@ -21,7 +21,7 @@
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
           <label>フラグ(隠れていない)</label>
-          <input class="form-control" type="text" placeholder="type1" value="1"" name="not_hiding">
+          <input class="form-control" type="text" placeholder="type1" value="1" name="{{ msg['type1'] }}">
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="form-group">
         <label>フラグ(隠れている)</label>
-        <input class="form-control" type="text" placeholder="type2" value="2"" name="hiding">
+        <input class="form-control" type="text" placeholder="type2" value="2" name="{{ msg['type2'] }}">
       </div>
     </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="form-group">
         <label>出力ファイル名</label>
-        <input class="form-control" type="text" placeholder="output" value="output.json" name="output">
+        <input class="form-control" type="text" placeholder="output" value="{{msg['output_file']}}" name="output">
       </div>
     </div>
 

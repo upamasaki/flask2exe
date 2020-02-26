@@ -1,0 +1,379 @@
+{
+    "test": "test",
+    "page_title": "Skeleton-Annotation",
+    "config_dir": "./config/",
+    "config_file": "config.json",
+    "skel_file": "skeleton_pos.csv",
+    "config_path": "./config/config.json",
+    "skel_path": "./config/skeleton_pos.csv",
+    "output_file": "output_20200226-080550.json",
+    "output_key": "20200226-080550",
+    "output_dir": "./log/",
+    "output_path": "./log/output_20200226-053710.json",
+    "sub_file": "sub_list.csv",
+    "sub_list_path": "./config/sub_list.csv",
+    "sub_list": [
+        [
+            1,
+            "T1"
+        ],
+        [
+            2,
+            "T2"
+        ],
+        [
+            3,
+            "T3"
+        ],
+        [
+            4,
+            "T4"
+        ],
+        [
+            5,
+            "T5"
+        ],
+        [
+            6,
+            "T6"
+        ],
+        [
+            7,
+            "T7"
+        ],
+        [
+            8,
+            "T8"
+        ],
+        [
+            9,
+            "T9"
+        ],
+        [
+            10,
+            "T10"
+        ],
+        [
+            11,
+            "T11"
+        ],
+        [
+            12,
+            "T12"
+        ],
+        [
+            13,
+            "T13"
+        ],
+        [
+            14,
+            "T14"
+        ],
+        [
+            15,
+            "T15"
+        ],
+        [
+            16,
+            "T16"
+        ],
+        [
+            17,
+            "T17"
+        ],
+        [
+            18,
+            "T18"
+        ],
+        [
+            19,
+            "T19"
+        ],
+        [
+            20,
+            "T20"
+        ],
+        [
+            21,
+            "T21"
+        ],
+        [
+            22,
+            "H1"
+        ],
+        [
+            23,
+            "H2"
+        ],
+        [
+            24,
+            "H3"
+        ],
+        [
+            25,
+            "H4"
+        ],
+        [
+            26,
+            "H5"
+        ],
+        [
+            27,
+            "H6"
+        ],
+        [
+            28,
+            "H7"
+        ],
+        [
+            29,
+            "H8"
+        ],
+        [
+            30,
+            "H9"
+        ],
+        [
+            31,
+            "H10"
+        ],
+        [
+            32,
+            "H11"
+        ],
+        [
+            33,
+            "H12"
+        ],
+        [
+            34,
+            "H13"
+        ],
+        [
+            35,
+            "H14"
+        ],
+        [
+            36,
+            "H15"
+        ],
+        [
+            37,
+            "H16"
+        ],
+        [
+            38,
+            "H17"
+        ],
+        [
+            39,
+            "H18"
+        ],
+        [
+            40,
+            "H19"
+        ],
+        [
+            41,
+            "H20"
+        ],
+        [
+            42,
+            "H21"
+        ],
+        [
+            43,
+            "H22"
+        ],
+        [
+            44,
+            "H23"
+        ],
+        [
+            45,
+            "H24"
+        ],
+        [
+            46,
+            "H25"
+        ],
+        [
+            47,
+            "K1"
+        ],
+        [
+            48,
+            "K2"
+        ],
+        [
+            49,
+            "K3"
+        ],
+        [
+            50,
+            "K4"
+        ],
+        [
+            51,
+            "K5"
+        ],
+        [
+            52,
+            "K6"
+        ],
+        [
+            53,
+            "K7"
+        ],
+        [
+            54,
+            "K8"
+        ],
+        [
+            55,
+            "K9"
+        ],
+        [
+            56,
+            "K10"
+        ],
+        [
+            57,
+            "K11"
+        ],
+        [
+            58,
+            "K12"
+        ],
+        [
+            59,
+            "K13"
+        ],
+        [
+            60,
+            "K14"
+        ],
+        [
+            61,
+            "K15"
+        ]
+    ],
+    "skel_name_key": [
+        [
+            "左肩峰",
+            "skel1"
+        ],
+        [
+            "右肩峰",
+            "skel2"
+        ],
+        [
+            "左肘",
+            "skel3"
+        ],
+        [
+            "右肘",
+            "skel4"
+        ],
+        [
+            "左腸骨",
+            "skel5"
+        ],
+        [
+            "右腸骨",
+            "skel6"
+        ],
+        [
+            "左手首",
+            "skel7"
+        ],
+        [
+            "右手首",
+            "skel8"
+        ],
+        [
+            "左膝関節点",
+            "skel9"
+        ],
+        [
+            "右膝関節点",
+            "skel10"
+        ],
+        [
+            "左足関節点",
+            "skel11"
+        ],
+        [
+            "右足関節点",
+            "skel12"
+        ],
+        [
+            "左足尖",
+            "skel13"
+        ],
+        [
+            "右足尖",
+            "skel14"
+        ],
+        [
+            "前額部",
+            "skel15"
+        ],
+        [
+            "顎",
+            "skel16"
+        ],
+        [
+            "胸骨",
+            "skel17"
+        ]
+    ],
+    "skel_key": [
+        "skel1",
+        "skel2",
+        "skel3",
+        "skel4",
+        "skel5",
+        "skel6",
+        "skel7",
+        "skel8",
+        "skel9",
+        "skel10",
+        "skel11",
+        "skel12",
+        "skel13",
+        "skel14",
+        "skel15",
+        "skel16",
+        "skel17"
+    ],
+    "skel_key_dump": "[\"skel1\", \"skel2\", \"skel3\", \"skel4\", \"skel5\", \"skel6\", \"skel7\", \"skel8\", \"skel9\", \"skel10\", \"skel11\", \"skel12\", \"skel13\", \"skel14\", \"skel15\", \"skel16\", \"skel17\"]",
+    "log_file": "20200226_080527.csv",
+    "read_path": "C:\\Users\\tani\\Documents\\GitRepo\\flask2exe\\datasets\\bus_image_sample",
+    "type1": "not_hide",
+    "not_hide": "1",
+    "type2": "hide",
+    "hide": "2",
+    "save_count": "0",
+    "output": "output_20200226-080541.json",
+    "output_ready": "ready",
+    "ready": "0",
+    "output_hc": "HC1",
+    "HC1": "1",
+    "output_to": "TO",
+    "TO": "2",
+    "output_ms": "MS",
+    "MS": "3",
+    "output_hc2": "HC2",
+    "HC2": "4",
+    "count": 4,
+    "img_path": "C:\\Users\\tani\\Documents\\GitRepo\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_097.png",
+    "sample_img_path": "./flask2exe/static/assets/img/not_Image.png",
+    "img_name": "20190820111100CAM5_097.png",
+    "path_len": 10,
+    "path1_len": 0,
+    "path2_len": 0,
+    "pvalue": 40,
+    "sub_name": "T4",
+    "sub_id": 4
+}

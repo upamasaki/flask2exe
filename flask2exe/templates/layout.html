@@ -186,6 +186,20 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="static/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="static/assets/demo/demo.js"></script>
+
+  <script>
+
+    function img_scan(img_num){
+      console.log(">run img_scan : ");
+      console.log(img_num);
+      if(img_num==0){
+        demo.showNotification2('top','left', '画像が見つかりません．Configから対象のフォルダを変更してください');
+      }
+    }
+
+    img_scan({{ msg['path_len'] }});
+
+  </script>
 </body>
 
 </html>

@@ -46,7 +46,7 @@
     </div>
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/save_data">
+      <form action="/skeleton_nextreload-9" method="POST">
         <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
           <b>データの読み込み</b><br>
         </button>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="col-lg-2 col-md-6 col-sm-6">
-      <form action="/save_data">
+      <form action="/save_data_skel">
         <button class="btn btn-primary btn-block alert2" type="submit" onclick="demo.showNotification2('top','left', 'save data')">
           <b>データの保存</b><br>
         </button>
@@ -140,12 +140,8 @@
         </button>
       </form>  
     </div>
-
-
   </div>
 
-
-  
 
   <div class="row">
     <div class="col-lg-7 col-md-7 col-sm-7">
@@ -178,13 +174,12 @@
           {% endfor %}
           x:<span id="pos_x">0</span>  y:<span id="pos_y">0</span>
           <hr class="skel_hr">
-          <input class="form-control" type="number" placeholder="count" value="0" name="save_count">
+          <input class="form-control" type="number" placeholder="count" value=0 name="skel_count" id="skel_count">
           <button class="btn btn-primary btn-block alert2" type="submit" onclick="skel_Confirm()">
-            <b>確定</b><br>
+            <b>確定(Ctrl+Q)</b><br>
           </button>
         </div>
       </div>
-
     </div>
 
     <div class="col-lg-2 col-md-2 col-sm-2">
@@ -207,41 +202,34 @@
 
       <div class="card card-stats">
         <div class="card-body ">
-          <ul class="side_text">隠れていない画像</ulclass="side_text">
+          <ul class="side_text">被験者</ulclass="side_text">
           <hr>
           <center>
-            <h3>{{ msg['path1_len'] }}枚</h3>
+            <div class="cp_ipselect cp_sl03">
+              <select required id="sub">
+                <option value="0" name="sample">Sample</option>
+                {% for sub_id, sub_name in msg['sub_list'] %}
+                  {% if msg['sub_id'] == sub_id %}
+                    <option value="{{ sub_id }}" name="{{ sub_name }}" selected>{{ sub_name }}</option>  
+                  {% else %}
+                    <option value="{{ sub_id }}" name="{{ sub_name }}">{{ sub_name }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              </div>
           </center>
           <hr>
         </div>
-      </div>
-
-      <div class="card card-stats">
-        <div class="card-body ">
-          <ul class="side_text">隠れている画像</ul>
-          <hr>
-          <center>
-            <h3>{{ msg['path2_len'] }}枚</h3>
-            {{ msg['skel_key_dump'] }}
-          </center>
-          <hr>
-        </div>
-      </div>
+      </div>     
     </div>
   </div>
-   
   </form>
-
-
 </div>
-
 
 <script type="text/javascript" language="javascript">
   let target = document.getElementById('js-target');
   // 要素を取得
   var divElement = document.getElementById('js-target') ;
-
-
   target.addEventListener('mousemove', getPosition);
 
   function getPosition(e) {
@@ -316,9 +304,22 @@
     // get_func('APIのGet用URL');
   }
 
+
+  var key_box = [];
+  
   function skel_Confirm(){
     demo.showNotification2('top','left', 'skel data Confirm......')
     console.log("on click skel_Confirm");
+    
+    var element = document.getElementById('skel_count');
+    console.log(element); // handleClick()
+    console.log(element.innerHTML); // handleClick()
+
+    var sub_element = document.getElementById('sub');
+    console.log(sub_element); // handleClick()
+    console.log(sub_element.selectedIndex); // handleClick()
+    console.log(sub_element[sub_element.selectedIndex].text); // handleClick()
+
     var skel_pos=document.querySelectorAll(".skel_pos");
     var skel_pos_box = [];
 
@@ -334,14 +335,15 @@
       skel_dict['y'] = y;
       console.log(skel_dict );
       skel_pos_box.push(skel_dict);
-
-
     }
     console.log(skel_pos_box);
 
+    key_box[element.value] = skel_pos_box;
     dump_data = {};
     dump_data['img_name'] = "{{msg['img_name']}}";
-    dump_data['key_data'] = skel_pos_box;
+    dump_data['key_data'] = key_box;
+    dump_data['sub_id'] = sub_element.selectedIndex;
+    dump_data['sub_name'] = sub_element[sub_element.selectedIndex].text;
 
     dump_data_json =  JSON.stringify(dump_data);
     console.log(dump_data_json);
@@ -349,9 +351,36 @@
     post_func('http://localhost:5050/skel_dump', dump_data_json)
 
   }
+ 
+  // keydown 	キーが最初に押された時に発生
+  document.addEventListener('keydown', (event) => {
+    var keyName = event.key;
 
+    if (event.ctrlKey) {
+      console.log(`keydown:Ctrl + ${keyName}`);
+      if(keyName=='q'){
+        console.log(`press Q`);
+        skel_Confirm();
+      }
+    } else if (event.shiftKey) {
+      console.log(`keydown:Shift + ${keyName}`);
+    } else {
+      console.log(`keydown:${keyName}`);
+    }
+  });
 
+  // keypress 	キーが修飾キー(※)でなかった場合に発
+  document.addEventListener('keypress', (event) => {
+    var keyName = event.key;
 
+    if (event.ctrlKey) {
+      console.log(`keypress:Ctrl + ${keyName}`);
+    } else if (event.shiftKey) {
+      console.log(`keypress:Shift + ${keyName}`);
+    } else {
+      console.log(`keypress:${keyName}`);
+    }
+  });
 </script>
       
 {% endblock %}

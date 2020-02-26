@@ -38,7 +38,7 @@ count = 0
 total_data = []
 
 #img_file = "X:\\aisin_image\\乗車前(谷)\\18日納品\\20191118_1\\VideoData_CAM4_CAM5\\正面図\\第一必要ファイル\\20190820111100CAM5_094.png"
-img_file = "./flask2exe/static/assets/img/not_Image.png"
+img_file = "./config/img/not_Image.png"
 b64 = base64.encodestring(open(img_file, 'rb').read())
 message = {'test': 'test'}
 img64 = {'img_data': b64.decode('utf8')}
@@ -51,11 +51,14 @@ message['skel_file'] = 'skeleton_pos.csv'
 message['config_path'] = message['config_dir']+message['config_file']
 message['skel_path'] = message['config_dir']+message['skel_file']
 
-message['output_file'] = 'output.json'
+today = datetime.now().strftime("%Y%m%d-%H%M%S") 
+message['output_file'] = 'output_' + today + '.json'
+message['output_key'] = today
 message['output_dir'] = './log/'
 message['output_path'] = message['output_dir'] + message['output_file']
 
-
+message['sub_file'] = 'sub_list.csv'
+message['sub_list_path'] =  message['config_dir'] + message['sub_file']
 #####################################
 ## index page
 
@@ -72,7 +75,12 @@ def logInit():
     skel_df = pd.read_csv(message['skel_path'], encoding="SHIFT-JIS")
     print("skel_df")
     print(skel_df)
+
+    sub_list_df = pd.read_csv(message['sub_list_path'], encoding="SHIFT-JIS")
+    pprint.pprint(sub_list_df)
     
+    message['sub_list'] = [(s1, s2) for s1, s2 in zip(sub_list_df['sub_id'], sub_list_df['sub_name'])]
+
     message['skel_name_key'] = [(s1, s2) for s1, s2 in zip(skel_df['posname'], skel_df['keyname'])]
     message['skel_key'] = [i for i in skel_df['keyname']]
     message['skel_key_dump'] = json.dumps(message['skel_key'])
@@ -120,7 +128,10 @@ def reload_progress():
     message['path_len'] = len(file_paths)
     message['path1_len'] = len(file_paths1)
     message['path2_len'] = len(file_paths2)
-    message['pvalue'] = int(message['count']/message['path_len']*100)
+    if(message['path_len'] == 0):
+        message['pvalue'] = 0
+    else:    
+        message['pvalue'] = int(message['count']/message['path_len']*100)
 
 def reload_setting():
     global file_paths
@@ -132,13 +143,23 @@ def reload_setting():
             message.update(data)
 
             file_paths = glob.glob("{}/*".format(message['read_path']))
+            file_paths.insert(0, message['sample_img_path'])
+            print(file_paths)
             reload_progress()
             
-
     except:
         print("not found config file")
         
     print(">reload config  message")
+    sample_img_file = "./flask2exe/static/assets/img/not_Image.png"
+    message['img_path'] = sample_img_file
+    message['sample_img_path'] = sample_img_file
+    message['img_name'] = "sample_image"
+
+    today = datetime.now().strftime("%Y%m%d-%H%M%S") 
+    message['output_file'] = 'output_' + today + '.json'
+    message['output_key'] = today
+
     pprint.pprint(message)
 
 
@@ -146,7 +167,6 @@ def reload_setting():
 def next(img_type):
     global message
     global total_data
-
     
     print(">next type:{}".format(img_type))
     b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())
@@ -231,6 +251,15 @@ def update_setting():
     message.update(req)
     message['count'] = int(message['save_count'])
     print(message)
+
+    if('data' in message):
+        del message['data']
+
+    today = datetime.now().strftime("%Y%m%d-%H%M%S") 
+    message['output_file'] = 'output_' + today + '.json'
+    message['output_key'] = today
+    message['output_dir'] = './log/'
+    message['output_path'] = message['output_dir'] + message['output_file']
     
     with open(message['config_dir']+'config.json', 'w') as f:
         json.dump(message, f, indent=4, ensure_ascii=False)
@@ -260,7 +289,7 @@ def save_data():
 
     return render_template('index.html', msg=message, img64=img64)
 
-@app.route("/save_data")  #追加
+@app.route("/save_data_skel")  #追加
 def save_data_skel():
     global message
     global total_data
@@ -277,6 +306,11 @@ def save_data_skel():
     print(">total_data")
     pprint.pprint(total_data)
 
+    
+    # now image read
+    b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())    
+    img64 = {'img_data': b64.decode('utf8')}
+
     return render_template('Skeleton.html', msg=message, img64=img64)
 
 #####################################
@@ -285,6 +319,9 @@ def save_data_skel():
 
 @app.route('/Skeleton')
 def Skeleton():
+    
+    logInit()
+    reload_setting()
     message['page_title'] = 'Skeleton-Annotation'
     return render_template('Skeleton.html', msg=message, img64=img64)
 
@@ -303,24 +340,49 @@ def skeleton_next(img_type, phase_type):
         print("!!!!SKIP!!!!")
     elif(phase_type=='back'):
         print("!!!!BACK!!!!")
+        print("data before")
+        pprint.pprint(total_data)
+
+        # file remove
+        print("remove : {}".format(total_data[-1]['send_file_path']))
+        os.remove(total_data[-1]['send_file_path'])
+
+        # data remove 
+        total_data.pop()
+
+        print(" |\n |\n\\/")
+        print("data after")
+        pprint.pprint(total_data)
+        message['count'] = message['count'] -2
+
+    elif(phase_type=='reload'):
+        print("!!!!reload!!!!")
     else:
-        utils.move_skel_file(img_type, phase_type, message, file_paths[message['count']])
+        message = utils.move_skel_file(img_type, phase_type, message, file_paths[message['count']])
+
         data = utils.get_img_info(file_paths, message)
         data['img_type'] = img_type
         data['img_flag'] = message[img_type]
         data['phase_type'] = phase_type
         data['phase_flag'] = message[phase_type]
+        data['send_file_path'] = message['send_file_path']
         data.update(skel_data)
-        message['data'] = data
-        total_data.append(message['data'])
+        
+        total_data.append(data)
 
+        if('sub_name' in data):    
+            message['sub_name'] = data['sub_name']
+            message['sub_id'] = data['sub_id']
     ## =======================================
     ## next data info 
     message['count'] = message['count'] + 1
     data = utils.get_img_info(file_paths, message)
     message.update(data)
-
-    b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())
+    try:
+        b64 = base64.encodestring(open(file_paths[message['count']], 'rb').read())
+    except IndexError:
+        print("file_paths[message['count']] <IndexError>!!!")
+        b64 = base64.encodestring(open(message['sample_img_path'], 'rb').read())
     img64 = {'img_data': b64.decode('utf8')}
     
     reload_progress()

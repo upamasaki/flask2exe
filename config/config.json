@@ -1,14 +1,263 @@
 {
     "test": "test",
-    "page_title": "Config",
+    "page_title": "Skeleton-Annotation",
     "config_dir": "./config/",
     "config_file": "config.json",
     "skel_file": "skeleton_pos.csv",
     "config_path": "./config/config.json",
     "skel_path": "./config/skeleton_pos.csv",
-    "output_file": "output.json",
+    "output_file": "output_20200226-113243.json",
+    "output_key": "20200226-113243",
     "output_dir": "./log/",
-    "output_path": "./log/output.json",
+    "output_path": "./log/output_20200226-113232.json",
+    "sub_file": "sub_list.csv",
+    "sub_list_path": "./config/sub_list.csv",
+    "sub_list": [
+        [
+            1,
+            "T1"
+        ],
+        [
+            2,
+            "T2"
+        ],
+        [
+            3,
+            "T3"
+        ],
+        [
+            4,
+            "T4"
+        ],
+        [
+            5,
+            "T5"
+        ],
+        [
+            6,
+            "T6"
+        ],
+        [
+            7,
+            "T7"
+        ],
+        [
+            8,
+            "T8"
+        ],
+        [
+            9,
+            "T9"
+        ],
+        [
+            10,
+            "T10"
+        ],
+        [
+            11,
+            "T11"
+        ],
+        [
+            12,
+            "T12"
+        ],
+        [
+            13,
+            "T13"
+        ],
+        [
+            14,
+            "T14"
+        ],
+        [
+            15,
+            "T15"
+        ],
+        [
+            16,
+            "T16"
+        ],
+        [
+            17,
+            "T17"
+        ],
+        [
+            18,
+            "T18"
+        ],
+        [
+            19,
+            "T19"
+        ],
+        [
+            20,
+            "T20"
+        ],
+        [
+            21,
+            "T21"
+        ],
+        [
+            22,
+            "H1"
+        ],
+        [
+            23,
+            "H2"
+        ],
+        [
+            24,
+            "H3"
+        ],
+        [
+            25,
+            "H4"
+        ],
+        [
+            26,
+            "H5"
+        ],
+        [
+            27,
+            "H6"
+        ],
+        [
+            28,
+            "H7"
+        ],
+        [
+            29,
+            "H8"
+        ],
+        [
+            30,
+            "H9"
+        ],
+        [
+            31,
+            "H10"
+        ],
+        [
+            32,
+            "H11"
+        ],
+        [
+            33,
+            "H12"
+        ],
+        [
+            34,
+            "H13"
+        ],
+        [
+            35,
+            "H14"
+        ],
+        [
+            36,
+            "H15"
+        ],
+        [
+            37,
+            "H16"
+        ],
+        [
+            38,
+            "H17"
+        ],
+        [
+            39,
+            "H18"
+        ],
+        [
+            40,
+            "H19"
+        ],
+        [
+            41,
+            "H20"
+        ],
+        [
+            42,
+            "H21"
+        ],
+        [
+            43,
+            "H22"
+        ],
+        [
+            44,
+            "H23"
+        ],
+        [
+            45,
+            "H24"
+        ],
+        [
+            46,
+            "H25"
+        ],
+        [
+            47,
+            "K1"
+        ],
+        [
+            48,
+            "K2"
+        ],
+        [
+            49,
+            "K3"
+        ],
+        [
+            50,
+            "K4"
+        ],
+        [
+            51,
+            "K5"
+        ],
+        [
+            52,
+            "K6"
+        ],
+        [
+            53,
+            "K7"
+        ],
+        [
+            54,
+            "K8"
+        ],
+        [
+            55,
+            "K9"
+        ],
+        [
+            56,
+            "K10"
+        ],
+        [
+            57,
+            "K11"
+        ],
+        [
+            58,
+            "K12"
+        ],
+        [
+            59,
+            "K13"
+        ],
+        [
+            60,
+            "K14"
+        ],
+        [
+            61,
+            "K15"
+        ]
+    ],
     "skel_name_key": [
         [
             "ç∂å®ïÙ",
@@ -99,148 +348,33 @@
         "skel17"
     ],
     "skel_key_dump": "[\"skel1\", \"skel2\", \"skel3\", \"skel4\", \"skel5\", \"skel6\", \"skel7\", \"skel8\", \"skel9\", \"skel10\", \"skel11\", \"skel12\", \"skel13\", \"skel14\", \"skel15\", \"skel16\", \"skel17\"]",
-    "log_file": "20200220_224852.csv",
-    "read_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample",
-    "type1": "not_hiding",
-    "type2": "hiding",
+    "log_file": "20200226_084039.csv",
+    "read_path": "C:\\Users\\tani\\Documents\\GitRepo\\flask2exe\\datasets\\bus_image_sample",
+    "type1": "not_hide",
+    "not_hide": "1",
+    "type2": "hide",
+    "hide": "2",
     "save_count": "0",
-    "path_len": 9,
-    "path1_len": 0,
-    "path2_len": 0,
-    "count": 3,
-    "pvalue": 33,
-    "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_097.png",
-    "data": {
-        "img_name": "20190820111100CAM5_095.png",
-        "img_path": "C:\\Users\\p2018833005\\Documents\\Git\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_095.png",
-        "count": 1,
-        "img_type": "not_hiding",
-        "img_flag": "1",
-        "phase_type": "ready",
-        "phase_flag": "0",
-        "key_data": [
-            {
-                "skel_id": "skel1xy",
-                "skel_key": "skel1",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel2xy",
-                "skel_key": "skel2",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel3xy",
-                "skel_key": "skel3",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel4xy",
-                "skel_key": "skel4",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel5xy",
-                "skel_key": "skel5",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel6xy",
-                "skel_key": "skel6",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel7xy",
-                "skel_key": "skel7",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel8xy",
-                "skel_key": "skel8",
-                "x": " 360 ",
-                "y": " 309 "
-            },
-            {
-                "skel_id": "skel9xy",
-                "skel_key": "skel9",
-                "x": " 519 ",
-                "y": " 138 "
-            },
-            {
-                "skel_id": "skel10xy",
-                "skel_key": "skel10",
-                "x": " 593 ",
-                "y": " 213 "
-            },
-            {
-                "skel_id": "skel11xy",
-                "skel_key": "skel11",
-                "x": " 367 ",
-                "y": " 288 "
-            },
-            {
-                "skel_id": "skel12xy",
-                "skel_key": "skel12",
-                "x": " 344 ",
-                "y": " 286 "
-            },
-            {
-                "skel_id": "skel13xy",
-                "skel_key": "skel13",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel14xy",
-                "skel_key": "skel14",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel15xy",
-                "skel_key": "skel15",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel16xy",
-                "skel_key": "skel16",
-                "x": "0",
-                "y": "0"
-            },
-            {
-                "skel_id": "skel17xy",
-                "skel_key": "skel17",
-                "x": "0",
-                "y": "0"
-            }
-        ]
-    },
-    "output": "output.json",
-    "img_name": "20190820111100CAM5_097.png",
-    "img_type": -1,
+    "output": "output_20200226-113230.json",
+    "output_ready": "ready",
+    "ready": "0",
     "output_hc": "HC1",
-    "flag_hc": "1",
-    "output_to": "TO",
-    "flag_to": "2",
-    "output_ms": "MS",
-    "flag_ms": "2",
-    "HC": "1",
-    "TO": "2",
-    "MS": "3",
-    "not_hiding": "1",
-    "hiding": "2",
     "HC1": "1",
+    "output_to": "TO",
+    "TO": "2",
+    "output_ms": "MS",
+    "MS": "3",
     "output_hc2": "HC2",
     "HC2": "4",
-    "output_ready": "ready",
-    "Ready": "0",
-    "ready": "0"
+    "count": 1,
+    "img_path": "C:\\Users\\tani\\Documents\\GitRepo\\flask2exe\\datasets\\bus_image_sample\\20190820111100CAM5_094.png",
+    "sample_img_path": "./flask2exe/static/assets/img/not_Image.png",
+    "img_name": "20190820111100CAM5_094.png",
+    "path_len": 10,
+    "path1_len": 0,
+    "path2_len": 0,
+    "pvalue": 10,
+    "sub_name": "T10",
+    "sub_id": 10,
+    "send_file_path": "./log/ready\\not_hide\\20190820111100CAM5_094.png"
 }
